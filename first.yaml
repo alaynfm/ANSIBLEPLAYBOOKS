@@ -1,6 +1,6 @@
 - name: Add IP to known_hosts
   ansible.builtin.known_hosts:
-    path: /etc/ssh/ssh_known_hosts
+    path: /home/semaphore/.ssh/known_hosts
     name: 18.0.2.10
     key: "{{ lookup('file', '/home/semaphore/.ssh/RDSIAM.pem') }}"
     state: present
