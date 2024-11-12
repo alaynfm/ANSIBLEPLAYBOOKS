@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: awx-postgres-pv
+spec:
+  capacity:
+    storage: 10Gi  # Adjust this based on your requirements
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data/awx-postgres  # Use a suitable path on your host
+
+
+#kubectl edit pvc ***** -n aws
+spec:
+---
+  storageClassName: manual
