@@ -1,5 +1,5 @@
 - name: Add IP to known_hosts
-  hosts: lcoalhost
+  hosts: localhost
   tasks:
     - name: Add IP to known_hosts
       ansible.builtin.known_hosts:
