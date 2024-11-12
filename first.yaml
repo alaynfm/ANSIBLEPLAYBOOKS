@@ -6,5 +6,4 @@
         path: /home/semaphore/.ssh/known_hosts
         name: 18.0.2.10
         key: "{{ lookup('file', '/home/semaphore/.ssh/RDSIAM.pem') }}"
-        state: present
   
