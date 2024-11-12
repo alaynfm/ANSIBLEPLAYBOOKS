@@ -1,6 +1,6 @@
-- name: My first play
-  hosts: all
-  tasks:
-    - name: Echo message
-      ansible.builtin.command:
-        cmd: echo "Hello world"
+- name: Add IP to known_hosts
+  ansible.builtin.known_hosts:
+    path: /etc/ssh/ssh_known_hosts
+    name: 18.0.2.10
+    key: "{{ lookup('file', '/home/semaphore/.ssh/RDSIAM.pem') }}"
+    state: present
