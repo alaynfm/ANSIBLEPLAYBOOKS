@@ -1,7 +1,5 @@
 - name: My first play
   hosts: all
-  vars:
-    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: Echo message
       ansible.builtin.command:
