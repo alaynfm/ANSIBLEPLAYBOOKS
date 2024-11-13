@@ -1,20 +1,26 @@
-#helloWorld.yaml
+# helloWorld.yaml
 ---
 - name: Basic tasks
   hosts: all
   tasks:
     - name: Execute uptime command
-      command: uptime
+      ansible.builtin.command: uptime
       register: uptime_result
-    - debug:
+      changed_when: false
+
+    - name: Display uptime result
+      ansible.builtin.debug:
         var: uptime_result.stdout_lines
 
     - name: Check OS release
-      command: cat /etc/os-release
+      ansible.builtin.command: cat /etc/os-release
       register: os_result
-    - debug:
+      changed_when: false
+
+    - name: Display OS release
+      ansible.builtin.debug:
         var: os_result.stdout_lines
 
     - name: Print a unique message
-      debug:
+      ansible.builtin.debug:
         msg: "Hello world!"
