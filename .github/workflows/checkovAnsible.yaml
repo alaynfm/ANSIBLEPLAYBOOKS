@@ -1,0 +1,43 @@
+name: "ANSIBLE CHECKOV PIPELINE"
+
+on:
+  push:
+    paths:
+      - 'playbooks/**'  # Trigger only on changes in the playbooks folder
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+permissions:
+  contents: write
+  security-events: write
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the Repository and Branch
+        uses: actions/checkout@v4
+
+      - name: Create Infra Folder
+        run: mkdir infra
+
+      - name: Run Checkov in silent mode
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: playbooks/
+          framework: ansible
+          output_format: sarif
+          output_file_path: checkov.sarif
+          quiet: true
+        continue-on-error: true
+
+      - name: Log after Checkov
+        run: |
+          echo "Checkov has completed. Moving to TFSec..."
+          sleep 4
+          ls -lias
+
+      - name: Upload SARIF file to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: checkov.sarif
