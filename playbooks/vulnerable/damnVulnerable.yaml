@@ -6,6 +6,7 @@
     - name: Execute uptime command
       ansible.builtin.command: uptime
       register: uptime_result
+      changed_when: false
 
     - name: Display uptime result
       ansible.builtin.debug:
@@ -14,6 +15,7 @@
     - name: Check OS release
       ansible.builtin.command: cat /etc/os-release
       register: os_result
+      changed_when: false
 
     - name: Display OS release
       ansible.builtin.debug:
