@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
+  
     - name: Ensure HTTPD is installed
       ansible.builtin.yum:
         name: httpd>=2.4
