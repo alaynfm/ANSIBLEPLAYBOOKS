@@ -33,8 +33,6 @@ jobs:
           framework: ansible
           output_format: sarif
           output_file_path: checkov.sarif
-          quiet: true
-        continue-on-error: true
 
       - name: Log after Checkov
         run: |
