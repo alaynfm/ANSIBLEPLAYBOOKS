@@ -1,15 +1,20 @@
-# helloworld!
+#helloWorld.yaml
 ---
 - name: Basic tasks
-  # This host is defined in the `first-inventory.ini`
   hosts: all
   tasks:
     - name: Execute uptime command
       command: uptime
       register: uptime_result
-    - debug: var=uptime_result.stdout_lines
+    - debug:
+        var: uptime_result.stdout_lines
 
     - name: Check OS release
       command: cat /etc/os-release
       register: os_result
-    - debug: var=os_result.stdout_lines
+    - debug:
+        var: os_result.stdout_lines
+
+    - name: Print a unique message
+      debug:
+        msg: "This is the updated playbook"
