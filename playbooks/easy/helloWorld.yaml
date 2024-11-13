@@ -17,4 +17,4 @@
 
     - name: Print a unique message
       debug:
-        msg: "This is the updated playbook"
+        msg: "Hello world!"
