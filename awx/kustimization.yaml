@@ -13,19 +13,19 @@ secretGenerator:
       - port=5432
       - database=awx
       - username=awx
-      - password=Ansible123!
+      - password=*******
       - type=managed
 
   - name: awx-admin-password
     type: Opaque
     literals:
-      - password=Ansible123!
+      - password=*******
 
 resources:
   # Find the latest tag here: https://github.com/ansible/awx-operator/releases
   - github.com/ansible/awx-operator/config/default?ref=0.20.0
-  - awx-clb-without-tls.yaml
-  - persistent.yaml
+  - awx-clb-no-tls.yaml
+  - awx-pv.yaml
 # Set the image tags to match the git version from above
 images:
   - name: quay.io/ansible/awx-operator

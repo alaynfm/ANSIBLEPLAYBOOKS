@@ -12,11 +12,3 @@ spec:
   hostPath:
     path: /mnt/data/awx-postgres  # Use a suitable path on your host
 
-
-#kubectl edit pvc ***** -n aws
-spec:
----
-  storageClassName: manual
-
-
-#V3A3PSUCgYEA+1mqogKTjZ0dTXHUQXEKiTeEoSaB4gwk8SU6wAndcR7FJsYzEg5F
