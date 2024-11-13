@@ -1,11 +1,10 @@
-- name: Verify tests
+---
+- name: Verify Tests
   hosts: all
-  gather_facts: False
+  gather_facts: false
   tasks:
-    - name: disabled
-      yum:
+    - name: Ensure HTTPD is installed
+      ansible.builtin.yum:
         name: httpd>=2.4
         state: present
-        validate_certs: false
-
-
+        validate_certs: false  # Vulnerability: SSL validation is disabled
