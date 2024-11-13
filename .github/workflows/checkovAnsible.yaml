@@ -38,7 +38,7 @@ jobs:
 
       - name: Log after Checkov
         run: |
-          echo "Checkov has completed. Moving to TFSec..."
+          echo "Checkov has completed"
           sleep 4
           ls -lias
 
