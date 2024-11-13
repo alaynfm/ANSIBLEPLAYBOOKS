@@ -24,4 +24,3 @@
     - name: Print a unique message
       ansible.builtin.debug:
         msg: "Hello world!"
-
