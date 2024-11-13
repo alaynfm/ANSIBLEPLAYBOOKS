@@ -1,7 +1,0 @@
-- name: My first play
-  hosts: all
-
-  tasks:
-    - name: Echo message
-      ansible.builtin.command:
-        cmd: echo "Hello world"
