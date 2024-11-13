@@ -4,9 +4,6 @@ on:
   push:
     paths:
       - 'playbooks/**'  # Trigger only on changes in the playbooks folder
-  pull_request:
-    paths:
-      - 'playbooks/**'  # Trigger only on changes in the playbooks folder
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 permissions:
@@ -25,8 +22,6 @@ jobs:
         uses: ansible-actions/ansible-lint-action@v1.0.3
         with:
           target: "./playbooks/vulnerable/"
-        continue-on-error: ${{ github.event_name != 'pull_request' }}
-
   checkov:
     runs-on: ubuntu-latest
 
@@ -41,7 +36,6 @@ jobs:
           framework: ansible
           output_format: sarif
           output_file_path: checkov.sarif
-        continue-on-error: ${{ github.event_name != 'pull_request' }}
 
       - name: Log after Checkov
         run: |
