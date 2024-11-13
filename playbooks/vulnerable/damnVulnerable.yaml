@@ -26,3 +26,4 @@
     - name: Debug OS result
       ansible.builtin.debug:
         var: os_result.stdout_lines
+        
